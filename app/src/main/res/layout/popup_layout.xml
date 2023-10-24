@@ -1,0 +1,62 @@
+<!-- res/layout/popup_layout.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#fcdab7">
+
+    <View
+        android:id="@+id/brightnessOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj nowe konto"
+        android:textSize="24dp"/>
+
+    <TextView
+        android:id="@+id/warningInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(Dokładnie sprawdź wpisywane dane)"
+        android:textSize="16dp"/>
+
+    <EditText
+        android:id="@+id/accountName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nazwa"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/accountLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Login"
+        android:inputType="text" />
+
+    <!-- Second Text Field -->
+    <EditText
+        android:id="@+id/accountPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hasło"
+        android:inputType="textPassword" />
+
+    <!-- Button -->
+    <Button
+        android:id="@+id/addPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj konto"
+        android:backgroundTint="#2a363b"
+        android:textColor="#fcdab7"/>
+
+</LinearLayout>

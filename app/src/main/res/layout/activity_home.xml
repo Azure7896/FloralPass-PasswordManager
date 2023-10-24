@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2a363b"
+    tools:context=".MainActivity">
+
+  <TextView
+      android:id="@+id/notes"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="17dp"
+      android:text="Twoje hasła"
+      android:textColor="#fcdab7"
+      android:textSize="20sp"
+      app:drawableLeftCompat="@drawable/baseline_lock_24"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/addNote"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="16dp"
+      android:layout_marginBottom="188dp"
+      android:text="Dodaj nowe konto"
+      app:backgroundTint="#fcdab7"
+      android:textColor="#2a363b"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"  />
+
+  <TextView
+      android:id="@+id/todayDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      android:layout_marginEnd="16dp"
+      android:text=""
+      android:textColor="#fcdab7"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="409dp"
+      android:layout_height="621dp"
+      tools:layout_editor_absoluteX="1dp"
+      tools:layout_editor_absoluteY="45dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

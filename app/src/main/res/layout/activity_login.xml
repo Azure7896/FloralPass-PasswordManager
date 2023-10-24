@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#2a363b">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/smallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:text="Autor: Szymon Napora 7ION"
+        android:textColor="#fcdab7" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/floralpasslogo" />
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="24sp"
+        android:textColor="#fcdab7"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/loginPasswordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginText"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Podaj swoje hasło..."
+        android:inputType="textPassword"
+        android:backgroundTint="#fcdab7"
+        android:textColor="#fcdab7"
+        android:textColorHint="#fcdab7" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginPasswordField"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Zaloguj się"
+        android:drawableRight="@drawable/baseline_login_24"
+        android:backgroundTint="#fcdab7"
+        android:textColor="#2a363b" />
+
+    <TextView
+        android:id="@+id/loginBlockedInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:text=""
+        android:textColor="#D3CBC3"
+        android:gravity="center"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/informationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginBlockedInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:text="FloralPass jest aplikacją która pozwala bezpiecznie przechowywać hasła w jednym miejscu."
+        android:textColor="#fcdab7"
+        android:gravity="center"
+        android:layout_gravity="center" />
+</RelativeLayout>
