@@ -1,5 +1,8 @@
 package com.example.myapplication
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import com.example.myapplication.database.SQLiteHelper
 
 class LoginActivity : AppCompatActivity() {
@@ -22,31 +26,32 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        showNotification(this)
+
         val dbHelper = SQLiteHelper(this)
 
-        //Set user name in the welcome message
+
         val loginText: TextView = findViewById(R.id.loginText)
         val name: String? = dbHelper.getUserNameById(1L);
         loginText.text = "Witaj $name, zaloguj się";
 
-        //Get elements by id
+
         val passwordField = findViewById<EditText>(R.id.loginPasswordField)
         val loginButton = findViewById<Button>(R.id.loginButton)
         val loginBlockedInfo: TextView = findViewById(R.id.loginBlockedInfo)
 
-        //Get user password from database
+
         val userPasswordToCheck = dbHelper.getPasswordById(1L)
 
 
-        //When login button clicked
         loginButton.setOnClickListener {
-            //Create validation object
+
             val validation = Validation()
-            //Parse passworfField to string
+
             val passwordFieldString = passwordField.text.toString()
-            //Validate passwords
-            if (validation.checkPasswordAreTheSame(passwordFieldString, userPasswordToCheck.toString())) {
-                //Open home window
+
+            if (validation.checkPasswordAreTheSame(SHAHash.sha256(passwordFieldString), userPasswordToCheck.toString())) {
+
                 navigateToHome()
             } else {
                 //Subtract attemp
@@ -63,10 +68,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    //Prevent use back button
     override fun onBackPressed() {}
 
-    //Show toast notification
     private fun showToast(text: String) {
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(applicationContext, text, duration)
@@ -74,14 +77,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    //Open home window
     private fun navigateToHome() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         showToast("Zalogowano pomyślnie")
     }
 
-    //Start timer
     private fun startTimer(loginBlockedInfo: TextView, button: Button) {
         if (!isTimerRunning) {
             timer = object : CountDownTimer(secondsRemaining * 1000L, 1000) {
@@ -104,12 +105,26 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    //Stop timer
     private fun stopTimer() {
         if (isTimerRunning) {
             timer?.cancel()
             isTimerRunning = false
         }
+    }
+
+    fun showNotification(context: Context) {
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel =
+            NotificationChannel("info_channel", "info", NotificationManager.IMPORTANCE_DEFAULT)
+        notificationManager.createNotificationChannel(channel)
+
+        val builder = NotificationCompat.Builder(context, "info_channel")
+            .setContentTitle("Uwaga!")
+            .setContentText("Nie podawaj nikomu swojego hasła oraz innych prywatnych danych!")
+            .setSmallIcon(android.R.drawable.ic_dialog_info)
+
+        notificationManager.notify(1, builder.build())
     }
 
 }
